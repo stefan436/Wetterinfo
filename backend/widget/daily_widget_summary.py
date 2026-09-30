@@ -178,6 +178,8 @@ def build_daily_summary(timeSteps, forecasts, name, description, tz_name):
                 elif avg_cloud <= CLOUD_COVER_THRESHOLDS[1]: dominant_code = 1
                 elif avg_cloud <= CLOUD_COVER_THRESHOLDS[2]: dominant_code = 2
                 else: dominant_code = 3
+                # Da es ein Durchschnitt ist, macht ein punktueller Zeitstempel keinen Sinn mehr
+                dominant_code_time = None
             else:
                 dominant_code = None
 
