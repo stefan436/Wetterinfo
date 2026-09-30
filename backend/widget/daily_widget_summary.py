@@ -3,6 +3,7 @@ import json
 import urllib.request
 import zipfile
 import io
+import numpy as np
 import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
@@ -159,7 +160,9 @@ def build_daily_summary(timeSteps, forecasts, name, description, tz_name):
 
         # --- Höchstes signifikantes Wetter (Wolkenlogik) ---
         valid_codes = [e["code"] for e in entries if e["code"] is not None]
+        valid_codes_time = np.array([e["timestamp"] for e in entries if e["code"] is not None])
         dominant_code = max(valid_codes) if valid_codes else None
+        dominant_code_time = valid_codes_time[valid_codes.index(dominant_code)] if dominant_code is not None else None
 
         if dominant_code is not None and dominant_code in [0, 1, 2, 3]:
             cloud_covers = []
@@ -224,6 +227,7 @@ def build_daily_summary(timeSteps, forecasts, name, description, tz_name):
         # --- Zusammenfassung speichern ---
         result["days"][display_date] = {
             "icon": full_icon_url,
+            "timestampOfDominantCode": dominant_code_time.isoformat() if dominant_code_time else None,
             "maxTemp": max_temp,
             "minTemp": min_temp,
             "precipProb": precip_prob,

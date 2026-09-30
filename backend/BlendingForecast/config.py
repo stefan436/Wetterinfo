@@ -5,13 +5,16 @@ hist_radar_film_steps = 24     # Für das Frontend (Letzte 2 Stunden inkl. T0)
 step_size = 5
 product_ruc = 'TOT_PREC'
 base_url_ruc = f'https://opendata.dwd.de/weather/nwp/v1/m/icon-d2-ruc/p/{product_ruc}/r/'
-grid_file = './data/icon_grid_0047_R19B07_L.nc'
-download_dir_ruc = "./data/RUC"
+# grid_file = './data/icon_grid_0047_R19B07_L.nc'
+# download_dir_ruc = "./data/RUC"
+grid_file = '/WWW/users/ge47fab/weather_data/pySTEPS_data/icon_grid_0047_R19B07_L.nc'
+download_dir_ruc = "/scratch/ge47fab/Wetter-data/pySTEPS_data/RUC"
 
 # RV Data
 product_rv = 'rv'
 base_url_rv = f"https://opendata.dwd.de/weather/radar/composite/{product_rv}/"
-download_dir_rv = "./data/RV"
+# download_dir_rv = "./data/RV"
+download_dir_rv = "/scratch/ge47fab/Wetter-data/pySTEPS_data/RV"
 
 
 # Main config
@@ -24,15 +27,24 @@ decay_tau = 60          # Was dieser Parameter macht --> blending_engine.py Zeil
 save_final_animation = False
 validate = True
 
-num_workers = 6         # 10 oder 12 im backend (beobachte RAM)
+num_workers = 12         # 10 oder 12 im backend (beobachte RAM)
 set_past_date = None # datetime(2026, 7, 2, 23, 20, tzinfo=timezone.utc)    
+
+# # COORD_BIN_PATH = r'../../../docs/data/coords_radarcomposite_rv.bin'
+# # ICON_GRID_FILE = r'/home/stefan/Schreibtisch/Coding/Wetterinfo/Wetterinfo/advanced_radar/pysteps/Blending/data/icon_grid_0047_R19B07_L.nc'      # Dein unstrukturiertes Quellgitter
+# # TARGET_GRID_FILE = r'/home/stefan/Schreibtisch/Coding/Wetterinfo/Wetterinfo/advanced_radar/pysteps/Blending/data/ICON_grid_conversion/transformed_icon_grid.txt'   # Entspricht der TARGET_GRID_DESCRIPTION im PDF
+# WEIGHTS_FILE = r'./data/ICON_grid_conversion/weights_icon2stere_con.nc'  # Die zu berechnenden Interpolationsgewichte
+# # IN_FILE = r'/home/stefan/Schreibtisch/Coding/Wetterinfo/Wetterinfo/advanced_radar/pysteps/Blending/temp_model_data.nc'         # Die eigentlichen Modelldaten
+# # OUT_FILE = r'/home/stefan/Schreibtisch/Coding/Wetterinfo/Wetterinfo/advanced_radar/pysteps/Blending/data/regridded_ICON_data.nc'           # Das finale Ergebnis
 
 # COORD_BIN_PATH = r'../../../docs/data/coords_radarcomposite_rv.bin'
 # ICON_GRID_FILE = r'/home/stefan/Schreibtisch/Coding/Wetterinfo/Wetterinfo/advanced_radar/pysteps/Blending/data/icon_grid_0047_R19B07_L.nc'      # Dein unstrukturiertes Quellgitter
 # TARGET_GRID_FILE = r'/home/stefan/Schreibtisch/Coding/Wetterinfo/Wetterinfo/advanced_radar/pysteps/Blending/data/ICON_grid_conversion/transformed_icon_grid.txt'   # Entspricht der TARGET_GRID_DESCRIPTION im PDF
-WEIGHTS_FILE = r'./data/ICON_grid_conversion/weights_icon2stere_con.nc'  # Die zu berechnenden Interpolationsgewichte
+WEIGHTS_FILE = r'/WWW/users/ge47fab/weather_data/pySTEPS_data/ICON_grid_conversion/weights_icon2stere_con.nc'  # Die zu berechnenden Interpolationsgewichte
 # IN_FILE = r'/home/stefan/Schreibtisch/Coding/Wetterinfo/Wetterinfo/advanced_radar/pysteps/Blending/temp_model_data.nc'         # Die eigentlichen Modelldaten
 # OUT_FILE = r'/home/stefan/Schreibtisch/Coding/Wetterinfo/Wetterinfo/advanced_radar/pysteps/Blending/data/regridded_ICON_data.nc'           # Das finale Ergebnis
+
+
 
 
 # export data
@@ -72,8 +84,11 @@ radarColorLevels = [
     (140.0, (122, 0,   122)),  # #7A007A (> 140 mm/h)       - Anker Violett
 ]
 
-save_path_webp = "./data/Forecast/frames/radar_frame_"
-url_webp = "/backend/BlendingForecast/data/Forecast/frames/radar_frame_"
-meta_json_path = "./data/Forecast/meta.json"
+# save_path_webp = "./data/Forecast/frames/radar_frame_"
+# url_webp = "/backend/BlendingForecast/data/Forecast/frames/radar_frame_"
+# meta_json_path = "./data/Forecast/meta.json"
 
+save_path_webp = "/WWW/users/ge47fab/weather_data/pySTEPS_data/Forecast/frames/radar_frame_"
+url_webp = "https://users.ph.nat.tum.de/ge47fab/weather_data/pySTEPS_data/Forecast/frames/radar_frame_"
+meta_json_path = "/WWW/users/ge47fab/weather_data/pySTEPS_data/Forecast/meta.json"
 

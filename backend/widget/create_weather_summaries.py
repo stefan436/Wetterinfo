@@ -24,14 +24,14 @@ def get_timezone_finder():
 MOSMIX_L_ALL_URL = "https://opendata.dwd.de/weather/local_forecasts/mos/MOSMIX_L/all_stations/kml/MOSMIX_L_LATEST.kmz"
 
 # Ordner, in dem die MOSMIX_S JSON-Dateien aus deinem Backend liegen
-MOSMIX_S_DIR = "/WWW/users/TUMid/weather_data/index/Forecast/mosmix_s"
+MOSMIX_S_DIR = "/WWW/users/ge47fab/weather_data/index/Forecast/mosmix_s"
 
 # Zielordner für die generierten Wetter-Zusammenfassungen (pro Station eine Datei)
-OUTPUT_DIR = "/WWW/users/TUMid/weather_data/widget"
+OUTPUT_DIR = "/WWW/users/ge47fab/weather_data/widget"
 
 ICON_BASE_URL = "https://raw.githubusercontent.com/stefan436/Wetterinfo/main/docs/icons/"
 
-COORDS_JSON_PATH = "/WWW/users/TUMid/weather_data/mosmix_stationen_coords.json"
+COORDS_JSON_PATH = "/WWW/users/ge47fab/weather_data/mosmix_stationen_coords.json"
 
 # Schwellenwerte für die Bewölkung
 CLOUD_COVER_THRESHOLDS = [30, 60, 80]

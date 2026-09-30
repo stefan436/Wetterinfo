@@ -7,13 +7,13 @@ import numpy as np
 # ==========================================
 
 MOSMIX_URL = "https://opendata.dwd.de/weather/local_forecasts/mos/MOSMIX_S/all_stations/kml/MOSMIX_S_LATEST_240.kmz"
-OUT_DIR = "./data/Forecast/mosmix_s/"
-# OUT_DIR = "/WWW/users/ge47fab/weather_data/index/Forecast/mosmix_s/"
-COORDS_JSON = "./data/mosmix_stationen_coords.json"
-# COORDS_JSON = "/WWW/users/ge47fab/weather_data/mosmix_stationen_coords.json"
+# OUT_DIR = "./data/Forecast/mosmix_s/"
+OUT_DIR = "/WWW/users/ge47fab/weather_data/index/Forecast/mosmix_s/"
+# COORDS_JSON = "./data/mosmix_stationen_coords.json"
+COORDS_JSON = "/WWW/users/ge47fab/weather_data/mosmix_stationen_coords.json"
 
-WARNMOS_DOWNLOAD_PATH = "./data/WarnMOS"
-# WARNMOS_DOWNLOAD_PATH = "/scratch/ge47fab/Wetter-data/index-MCP/WarnMOS"
+# WARNMOS_DOWNLOAD_PATH = "./data/WarnMOS"
+WARNMOS_DOWNLOAD_PATH = "/scratch/ge47fab/Wetter-data/index-MCP/WarnMOS"
 WARNMOS_BASE_URL = "https://opendata.dwd.de/weather/local_forecasts/warnmos/"
 
 MOSMIX_TARGETS = {'TTT', 'Td', 'RR1c', 'Neff', 'DD', 'FF', 'FX1', 'wwM', 'ww', 'Rad1h'}
@@ -29,39 +29,39 @@ set_past_date = None # datetime(2026, 8, 8, 20, 0)
 step_size = 60          # in min
 steps_into_future = 16
 
-grid_file = './data/icon_grid_0047_R19B07_L.nc'
-# grid_file = '/WWW/users/ge47fab/weather_data/pySTEPS_data/icon_grid_0047_R19B07_L.nc'
+# grid_file = './data/icon_grid_0047_R19B07_L.nc'
+grid_file = '/WWW/users/ge47fab/weather_data/pySTEPS_data/icon_grid_0047_R19B07_L.nc'
 num_workers = 6
 
-CAPE_MU_ref = np.load('./data/cape_ref_2d.npy')
-# CAPE_MU_ref = np.load('/WWW/users/ge47fab/weather_data/index/cape_ref_2d.npy')
-CIN_MU_ref = np.load('./data/cin_ref_2d.npy')
-# CIN_MU_ref = np.load('/WWW/users/ge47fab/weather_data/index/cin_ref_2d.npy')
+# CAPE_MU_ref = np.load('./data/cape_ref_2d.npy')
+CAPE_MU_ref = np.load('/WWW/users/ge47fab/weather_data/index/cape_ref_2d.npy')
+# CIN_MU_ref = np.load('./data/cin_ref_2d.npy')
+CIN_MU_ref = np.load('/WWW/users/ge47fab/weather_data/index/cin_ref_2d.npy')
 
 # Dynamische Konfiguration für alle herunterzuladenden Produkte
 PRODUCTS = {
     "CAPE_MU": {
         "nodata": 9999.0,
-        "download_dir": "./data/CAPE_MU/",
-        # "download_dir": "/scratch/ge47fab/Wetter-data/index-MCP/CAPE_MU/",
+        # "download_dir": "./data/CAPE_MU/",
+        "download_dir": "/scratch/ge47fab/Wetter-data/index-MCP/CAPE_MU/",
         "base_url": "https://opendata.dwd.de/weather/nwp/v1/m/icon-d2-ruc/p/CAPE_MU/r/"
     },
     "CIN_MU": {
         "nodata": [9999.0, -999.9],
-        "download_dir": "./data/CIN_MU/",
-        # "download_dir": "/scratch/ge47fab/Wetter-data/index-MCP/CIN_MU/",
+        # "download_dir": "./data/CIN_MU/",
+        "download_dir": "/scratch/ge47fab/Wetter-data/index-MCP/CIN_MU/",
         "base_url": "https://opendata.dwd.de/weather/nwp/v1/m/icon-d2-ruc/p/CIN_MU/r/"
     },
     "WSHEAR_V": {
         "nodata": 9999.0,
-        "download_dir": "./data/WSHEAR_V",
-        # "download_dir": "/scratch/ge47fab/Wetter-data/index-MCP/WSHEAR_V/",
+        # "download_dir": "./data/WSHEAR_V",
+        "download_dir": "/scratch/ge47fab/Wetter-data/index-MCP/WSHEAR_V/",
         "base_url": "https://opendata.dwd.de/weather/nwp/v1/m/icon-d2-ruc/p/WSHEAR_V/lvt1/103/lv1/6000/r/"
     },
     "WSHEAR_U": {
         "nodata": 9999.0,
-        "download_dir": "./data/WSHEAR_U",
-        # "download_dir": "/scratch/ge47fab/Wetter-data/index-MCP/WSHEAR_U/",
+        # "download_dir": "./data/WSHEAR_U",
+        "download_dir": "/scratch/ge47fab/Wetter-data/index-MCP/WSHEAR_U/",
         "base_url": "https://opendata.dwd.de/weather/nwp/v1/m/icon-d2-ruc/p/WSHEAR_U/lvt1/103/lv1/6000/r/"
     }
 }
@@ -104,10 +104,10 @@ indexColorLevels = [
     (99.61, (122, 0,   122)),  # #7A007A 
 ]
 
-save_path_webp = "./data/Forecast/frames/radar_frame_"
-url_webp = "/backend/index-MCP/data/Forecast/frames/radar_frame_"
-meta_json_path = "./data/Forecast/meta.json"
+# save_path_webp = "./data/Forecast/frames/radar_frame_"
+# url_webp = "/backend/index-MCP/data/Forecast/frames/radar_frame_"
+# meta_json_path = "./data/Forecast/meta.json"
 
-# save_path_webp = "/WWW/users/ge47fab/weather_data/index/Forecast/frames/radar_frame_"
-# url_webp = "https://users.ph.nat.tum.de/ge47fab/weather_data/index/Forecast/frames/radar_frame_"
-# meta_json_path = "/WWW/users/ge47fab/weather_data/index/Forecast/meta.json"
+save_path_webp = "/WWW/users/ge47fab/weather_data/index/Forecast/frames/radar_frame_"
+url_webp = "https://users.ph.nat.tum.de/ge47fab/weather_data/index/Forecast/frames/radar_frame_"
+meta_json_path = "/WWW/users/ge47fab/weather_data/index/Forecast/meta.json"
