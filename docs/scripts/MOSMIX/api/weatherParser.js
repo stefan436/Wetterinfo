@@ -16,7 +16,7 @@ export async function loadMosmixData(stationId, userLat, userLon) {
     "https://cors-proxy-for-weather-app.stefan-wiedemann01.workers.dev?url=";
   const baseUrl = `https://opendata.dwd.de/weather/local_forecasts/mos/MOSMIX_L/single_stations/${stationId}/kml/MOSMIX_L_LATEST_${stationId}.kmz`;
 
-  const resp = await fetch(proxy + encodeURIComponent(baseUrl));
+  const resp = await fetch(proxy + encodeURIComponent(baseUrl), { cache: "no-store" });
   if (!resp.ok)
     throw new Error(`KMZ konnte nicht geladen werden (${resp.status})`);
   setStatus("Entpacke Wetterdaten...");
@@ -121,7 +121,7 @@ export async function parseKML(text, userLat, userLon, stationId) {
   if (USE_MOSMIX_S) {
     try {
       setStatus("Integriere stündliche Vorhersagedaten...");
-      const sResp = await fetch(`https://users.ph.nat.tum.de/ge47fab/weather_data/index/Forecast/mosmix_s/${stationId}.json`);
+      const sResp = await fetch(`https://users.ph.nat.tum.de/ge47fab/weather_data/index/Forecast/mosmix_s/${stationId}.json`, { cache: "no-store" });
       //   const sResp = await fetch(`./../backend/index-MCP/data/Forecast/mosmix_s/${stationId}.json`);
 
       if (sResp.ok) { 

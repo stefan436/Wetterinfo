@@ -1,7 +1,7 @@
 async function loadTimeStamps() {
     const [response_gft, response_uvi] = await Promise.all([
-        fetch("https://users.ph.nat.tum.de/ge47fab/weather_data/index/Forecast/gft_forecast_times.json"),
-        fetch("https://users.ph.nat.tum.de/ge47fab/weather_data/index/Forecast/uvi_forecast_times.json")
+        fetch("https://users.ph.nat.tum.de/ge47fab/weather_data/index/Forecast/gft_forecast_times.json", { cache: "no-store" }),
+        fetch("https://users.ph.nat.tum.de/ge47fab/weather_data/index/Forecast/uvi_forecast_times.json", { cache: "no-store" })
     ]);
 
     const gft_times_raw = await response_gft.json();
@@ -22,7 +22,7 @@ async function loadTimeStamps() {
 
 export async function runForecastUvAndPt(stationId) {
     try {
-        const response = await fetch(`https://users.ph.nat.tum.de/ge47fab/weather_data/index/Forecast/uv_gft/${stationId}.json`);
+        const response = await fetch(`https://users.ph.nat.tum.de/ge47fab/weather_data/index/Forecast/uv_gft/${stationId}.json`, { cache: "no-store" });
         
         if (!response.ok) {
             console.warn(`Station ${stationId} liegt außerhalb der GFT/UV-Abdeckung.`);
