@@ -22,7 +22,8 @@
   --font-family: Inter, system-ui, sans-serif;
 }
 
-:root[data-theme="dark"] {
+@media (prefers-color-scheme: dark) {
+  :root {
   /* Browser mitteilen, dass dies ein Dark Theme ist */
   color-scheme: dark;
 
@@ -44,6 +45,7 @@
 
   /* Typografie */
   --font-family: Inter, system-ui, sans-serif;
+  }
 }
 
 /* --- Globale Resets --- */
