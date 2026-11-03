@@ -6,7 +6,7 @@ body, html {
 
 #controls {
     padding: 6px;
-    background: white;
+    background: var(--badge-bg);
     border-top: 1px solid var(--border);
     box-shadow: 0 -2px 5px rgba(0,0,0,0.05);
     order: 2;
@@ -58,7 +58,7 @@ body, html {
     
     /* 2. Styling-Optimierungen für einen moderneren Look */
     padding: 8px 8px;
-    background: rgba(255, 255, 255, 0.95); /* Leicht transparent für edleren Look */
+    background: var(--badge-bg);
     backdrop-filter: blur(4px);            /* Soft-Blur-Effekt dahinter (falls unterstützt) */
     
     line-height: 1.4em; /* Etwas mehr Zeilenabstand erhöht die Lesbarkeit */

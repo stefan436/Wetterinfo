@@ -16,6 +16,7 @@
 
   /* Hamburgermenü Variablen */
   --header-height: 50px;
+  --header-bg: #4f4f4f;
   --menu-bg: #262626cc;
 
   /* Typografie */
@@ -41,7 +42,8 @@
 
   /* Hamburgermenü Variablen */
   --header-height: 50px;
-  --menu-bg: #1e293b;
+  --header-bg: #1e293b;
+  --menu-bg: #1e293bcc;
 
   /* Typografie */
   --font-family: Inter, system-ui, sans-serif;

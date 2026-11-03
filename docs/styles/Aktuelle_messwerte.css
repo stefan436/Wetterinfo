@@ -12,7 +12,7 @@ h1 {
 .weather-card {
   max-width: 500px;
   margin: 0 auto;
-  background: white;
+  background: var(--box-bg);
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   padding: 20px;
@@ -52,27 +52,34 @@ h1 {
 }
 
 
-/* Footer Design */
-
-footer {
-  background: #f1f1f1;
-  color: #4f4f4f;
-  text-align: center;
+/* Footer */
+.footer {
+  background-color: var(--badge-bg);
+  border-top: 1px solid var(--border);
   padding: 16px;
+  text-align: center;
   margin-top: 40px;
   font-size: 14px;
-  border-top: 1px solid #ccc;
 }
 
-footer p {
+.footer-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 10px;
+  color: var(--primary);
+}
+
+.footer-link {
+  color: var(--primary);
+  text-decoration: underline;
+  font-weight: 500;
   font-size: 10px;
 }
 
-footer a {
-  color: #4f4f4f;
-  text-decoration: underline;
+.footer-link:hover {
+  color: var(--primary-hover);
 }
 
-footer a:hover {
-  color: #333;
-}

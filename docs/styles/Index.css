@@ -45,10 +45,12 @@ h4 {
   max-height: 140px;
   display: flex;
   overflow: scroll;
+  overflow-x: hidden;
 }
 
 .badge {
   border-radius: 999px;
+  overflow: hidden; /* Verhindert horizontales und vertikales Scrollen */
 }
 
 /* Meta-Box */
@@ -127,7 +129,7 @@ select {
 
 /* Station Info */
 .station-info {
-  background: white;
+  background: var(--badge-bg);
   border: 1px solid var(--border);
   border-radius: 8px;
   padding: 12px;
