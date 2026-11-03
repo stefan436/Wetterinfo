@@ -25,7 +25,7 @@ h4 {
   flex-wrap: wrap;
   gap: 12px;
   align-items: center;
-  background: white;
+  background: var(--box-bg);
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 16px;
@@ -56,7 +56,7 @@ h4 {
   margin-bottom: 0px;
   margin-top: 20px;
   padding: 14px 16px;
-  background: white;
+  background: var(--box-bg);
   border-radius: 8px;
   border: 1px solid var(--border);
   font-size: 15px;
@@ -70,7 +70,6 @@ h4 {
   padding: 8px;
   border-radius: 8px;
   border: 1px solid var(--border);
-  background: white;
 }
 
 /* Tabellen */
@@ -100,7 +99,7 @@ th {
 #plot {
   margin-top: 20px;
   padding: 16px;
-  background: white;
+  background: var(--box-bg);
   border-radius: 8px;
   border: 1px solid var(--border);
   height: auto;
@@ -155,7 +154,7 @@ select {
 
 /* Wetterübersicht */
 .weather-summary {
-  background: white;
+  background: var(--box-bg);
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 16px;
@@ -234,7 +233,7 @@ select {
   flex: 0 0 auto;
   width: 100px;
   min-height: 120px;
-  background: #f1f1f1;
+  background: var(--badge-bg);
   border-radius: 10px;
   border: 1px solid var(--border);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);

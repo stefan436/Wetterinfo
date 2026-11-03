@@ -11,10 +11,36 @@
   --border: #e5e7eb;
   --badge-bg: #f1f1f1;
   --badge-text: #4f4f4f;
+  --box-bg: white;
+  --btn-text: white;
 
   /* Hamburgermenü Variablen */
   --header-height: 50px;
   --menu-bg: #262626cc;
+
+  /* Typografie */
+  --font-family: Inter, system-ui, sans-serif;
+}
+
+:root[data-theme="dark"] {
+  /* Browser mitteilen, dass dies ein Dark Theme ist */
+  color-scheme: dark;
+
+  --bg: #0f172a;           /* Tiefes Schiefergrau */
+  --fg: #f8fafc;           /* Strahlendes, kühles Weiß für Text */
+  --box-bg: #1e293b;       /* Etwas heller als der Hintergrund für Cards */
+  --border: #334155;       /* Sichtbarer, aber subtiler Rahmen */
+  
+  --primary: #cbd5e1;      /* Helles Blaugrau als Akzent */
+  --primary-hover: #f1f5f9;/* Wird beim Hover noch heller */
+  --btn-text: #0f172a;     /* Dunkler Text für maximalen Kontrast auf dem hellen Button */
+  
+  --badge-bg: #334155;     /* Dezent abgehobener Hintergrund */
+  --badge-text: #e2e8f0;   /* Gut lesbarer Badge-Text */
+
+  /* Hamburgermenü Variablen */
+  --header-height: 50px;
+  --menu-bg: #1e293b;
 
   /* Typografie */
   --font-family: Inter, system-ui, sans-serif;
@@ -33,7 +59,7 @@ html, body {
 /* Buttons aus beiden Dateien zusammengeführt */
 button, .btn {
   background: var(--primary);
-  color: white;
+  color: var(--btn-text);
   border: none;
   border-radius: 8px;
   padding: 8px 14px;
