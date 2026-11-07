@@ -336,7 +336,7 @@ function renderSunHoursPlot(plotlyDiv, param, seriesMap, timeSteps, timeZoneId, 
 }
 
 // HAUPTFUNKTION: Rendert den Plot
-export function renderPlot(param, seriesMap, timeSteps, result_uv_and_pt, timeZoneId) {
+export function renderPlot(param, seriesMap, timeSteps, result_uv_and_pt, timeZoneId, userLat, userLon) {
   const plotlyDiv = document.getElementById("plotlyDiv");
 
   if (!seriesMap || !seriesMap[param]) {
@@ -354,16 +354,43 @@ export function renderPlot(param, seriesMap, timeSteps, result_uv_and_pt, timeZo
   const hasError = !!seriesMap[param + "_error"];
   let shapes = [];
 
-  // Nachtbereiche 
+// Nachtbereiche 
   if (!param.includes("UV-Index")) {
     const nightColor = "rgba(241, 241, 241, 0.75)";
     const datesSet = new Set();
+    
     timeSteps.forEach((ts) => {
       const bTime = getStationTime(ts, timeZoneId);
       if (datesSet.has(bTime.dayIso)) return;
       datesSet.add(bTime.dayIso);
-      shapes.push({ type: "rect", xref: "x", yref: "paper", x0: `${bTime.dayIso} 00:00:00`, x1: `${bTime.dayIso} 08:00:00`, y0: 0, y1: 1, fillcolor: nightColor, line: { width: 0 }, layer: "below" });
-      shapes.push({ type: "rect", xref: "x", yref: "paper", x0: `${bTime.dayIso} 20:00:00`, x1: `${bTime.dayIso} 23:59:59`, y0: 0, y1: 1, fillcolor: nightColor, line: { width: 0 }, layer: "below" });
+      
+      const calcDate = new Date(`${bTime.dayIso}T12:00:00Z`);
+      const times = SunCalc.getTimes(calcDate, userLat, userLon);
+      
+      const hasSunrise = times.sunrise && !isNaN(times.sunrise.getTime());
+      const hasSunset = times.sunset && !isNaN(times.sunset.getTime());
+
+      if (hasSunrise && hasSunset) {
+        const sunriseStr = getStationTime(times.sunrise, timeZoneId).exactPlotlyString;
+        const sunsetStr = getStationTime(times.sunset, timeZoneId).exactPlotlyString;
+        
+        shapes.push(
+          { type: "rect", xref: "x", yref: "paper", x0: `${bTime.dayIso} 00:00:00`, x1: sunriseStr, y0: 0, y1: 1, fillcolor: nightColor, line: { width: 0 }, layer: "below" },
+          { type: "rect", xref: "x", yref: "paper", x0: sunsetStr, x1: `${bTime.dayIso} 23:59:59`, y0: 0, y1: 1, fillcolor: nightColor, line: { width: 0 }, layer: "below" }
+        );
+      } else {
+        // Fallback für Polartag oder Polarnacht
+        const noonTime = (times.solarNoon && !isNaN(times.solarNoon.getTime())) ? times.solarNoon : calcDate;
+        const sunPos = SunCalc.getPosition(noonTime, userLat, userLon);
+        if (sunPos.altitude <= 0) {
+          // Polarnacht: Die Sonne ist selbst am Mittag unter dem Horizont.
+          shapes.push({ 
+            type: "rect", xref: "x", yref: "paper", 
+            x0: `${bTime.dayIso} 00:00:00`, x1: `${bTime.dayIso} 23:59:59`, 
+            y0: 0, y1: 1, fillcolor: nightColor, line: { width: 0 }, layer: "below" 
+          });
+        }
+      }
     });
   }
 

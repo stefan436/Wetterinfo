@@ -15,13 +15,15 @@ export function getStationTime(dateInput, timeZoneId) {
   const month = getP('month');
   const day = getP('day');
   const hour = getP('hour');
+  const minute = getP('minute'); 
+  const second = getP('second'); 
   
   const pad = (n) => String(n).padStart(2, '0');
   
   return {
-    d, 
-    year, month, day, hour,
+    d, year, month, day, hour, minute, second,
     dayIso: `${year}-${pad(month)}-${pad(day)}`, 
-    plotlyString: `${year}-${pad(month)}-${pad(day)} ${pad(hour)}:00:00`
+    plotlyString: `${year}-${pad(month)}-${pad(day)} ${pad(hour)}:00:00`,
+    exactPlotlyString: `${year}-${pad(month)}-${pad(day)} ${pad(hour)}:${pad(minute)}:${pad(second)}`
   };
 }

@@ -129,7 +129,7 @@ async function handleStationSelection(stationId, distance) {
       ? "Temperatur (°C)"
       : data.plotColumns[0];
     if (defaultParam) {
-      renderPlot(defaultParam, appState.seriesMap, appState.timeSteps, appState.result_uv_and_pt, appState.timeZoneId);
+      renderPlot(defaultParam, appState.seriesMap, appState.timeSteps, appState.result_uv_and_pt, appState.timeZoneId, userLat, userLon);
     }
 
     buildSummary(appState.seriesMap, appState.timeSteps, appState.timeZoneId);
@@ -149,7 +149,7 @@ document.getElementById("addressButton").addEventListener("click", handleGeocode
 document.getElementById("confirmButton").addEventListener("click", handleConfirmResult);
 
 document.getElementById("plotSelect").addEventListener("change", (e) => {
-  renderPlot(e.target.value, appState.seriesMap, appState.timeSteps, appState.result_uv_and_pt, appState.timeZoneId);
+  renderPlot(e.target.value, appState.seriesMap, appState.timeSteps, appState.result_uv_and_pt, appState.timeZoneId, userLat, userLon);
 });
 
 document.addEventListener("DOMContentLoaded", () => {
